@@ -73,7 +73,7 @@ int RCount(struct Node *p)
     }
 }
 
-int Add(struct Node *p)
+int Sum(struct Node *p)
 {
     int sum = 0;
     while (p)
@@ -84,7 +84,7 @@ int Add(struct Node *p)
     return sum;
 }
 
-int RAdd(struct Node *p)
+int RSum(struct Node *p)
 {
     if (p==NULL)
     {
@@ -92,8 +92,22 @@ int RAdd(struct Node *p)
     }
     else 
     {
-        return RAdd(p->next) + p->data;
+        return RSum(p->next) + p->data;
     }
+}
+
+int Max(struct Node *p)
+{
+    int max = INT32_MIN;
+    while (p)
+    {
+        if (p->data>max)
+        {
+            max = p->data;
+        }
+        p = p->next;
+    }
+    return max;
 }
 
 int main()
@@ -103,7 +117,7 @@ int main()
     display(first);
     
     cout << "The number of elements is " << Count(first)<<endl;
-    cout << "The sum of elements is " << Add(first)<<endl;
+    cout << "The sum of elements is " << Sum(first)<<endl;
     return 0;
 }
 
