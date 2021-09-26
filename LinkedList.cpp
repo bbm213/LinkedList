@@ -110,6 +110,23 @@ int Max(struct Node *p)
     return max;
 }
 
+int RMax (struct Node *p)
+{
+    int x = 0;
+    if (p==0)
+        return INT32_MIN;
+    x = RMax(p->next);
+    if (x >p->data)
+    {
+        return x;
+    }
+    else
+    {
+        return  p->data;
+    }
+
+}
+
 int main()
 {
     int A[] = { 1,2,3,4,5 };
@@ -118,6 +135,9 @@ int main()
     
     cout << "The number of elements is " << Count(first)<<endl;
     cout << "The sum of elements is " << Sum(first)<<endl;
+    cout << "The maximum number is " << Max(first) << endl;
+    cout << "The Maximum with recursive function is " << RMax(first) << endl;
+    
     return 0;
 }
 
